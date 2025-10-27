@@ -17,6 +17,10 @@ func main() {
 		fmt.Scanln(&x)
 		fmt.Println("请输入第二个整数:")
 		fmt.Scanln(&b)
+		if b == 0 || x != "+" && x != "-" && x != "/" && x != "*" {
+			fmt.Println("输入有误，请重新输入")
+			continue
+		}
 		switch x {
 		case "+":
 			fmt.Printf("%d+%d=%d", a, b, a+b)
