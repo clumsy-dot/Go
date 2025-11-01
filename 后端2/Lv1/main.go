@@ -61,8 +61,12 @@ func main() {
 			fmt.Println("请输入出售数量:")
 			var amount int
 			fmt.Scanln(&amount)
-			success, message := p.Sell(amount)
-			fmt.Println(success, message, "剩余库存:", p.Stock)
+			if amount > p.Stock {
+				fmt.Println("数量不够")
+			} else {
+				success, message := p.Sell(amount)
+				fmt.Println(success, message, "剩余库存:", p.Stock)
+			}
 		case 4:
 			fmt.Println("感谢使用，再见")
 		}
