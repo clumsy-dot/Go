@@ -6,8 +6,8 @@ import (
 )
 
 var (
-	wg sync.WaitGroup
-	mu sync.Mutex
+	wg   sync.WaitGroup
+	lock sync.Mutex
 )
 
 type Counter struct {
@@ -15,14 +15,14 @@ type Counter struct {
 }
 
 func (a *Counter) Increment() {
-	mu.Lock()
+	lock.Lock()
 	a.count += 1
-	defer mu.Unlock()
+	defer lock.Unlock()
 }
 
 func (a *Counter) Value() int {
-	mu.Lock()
-	defer mu.Unlock()
+	lock.Lock()
+	defer lock.Unlock()
 	return a.count
 }
 
