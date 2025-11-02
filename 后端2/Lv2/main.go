@@ -10,6 +10,7 @@ var wg sync.WaitGroup
 
 func f1(filesname string, ch chan<- string) {
 	defer wg.Done()
+	fmt.Println("正在下载" + filesname)
 	time.Sleep(time.Second)
 	ch <- filesname + "下载完成"
 }
@@ -24,5 +25,8 @@ func main() {
 	close(ch)
 	for a := range ch {
 		fmt.Println(a)
+	}
+	if len(ch) == 0 {
+		fmt.Println("全部下载完成")
 	}
 }
