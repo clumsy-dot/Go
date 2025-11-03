@@ -2,18 +2,18 @@ package main
 
 import "fmt"
 
-type Product struct {
+type Product struct { //定义Product结构体
 	Name  string
 	Price float64
 	Stock int
 }
 
-func TotalValue(Price float64, number int) float64 {
+func TotalValue(Price float64, number int) float64 { //计算价格并返回值
 	value := Price * float64(number)
 	return value
 }
 
-func IsInStock(stock int) bool {
+func IsInStock(stock int) bool { //判断数量是否够
 	if stock > 0 {
 		return true
 	} else {
@@ -21,15 +21,15 @@ func IsInStock(stock int) bool {
 	}
 }
 
-func Info(p Product) string {
+func Info(p Product) string { //查询商品
 	return ("商品名称:" + p.Name + ",价格:" + fmt.Sprintf("%.2f", p.Price) + ",库存:" + fmt.Sprintf("%d", p.Stock))
 }
 
-func (p *Product) Restock(amount int) {
+func (p *Product) Restock(amount int) { //计算进货后的数量
 	p.Stock += amount
 }
 
-func (p *Product) Sell(amount int) (success bool, message string) {
+func (p *Product) Sell(amount int) (success bool, message string) { //判断库存是否足够
 	if p.Stock >= amount {
 		p.Stock -= amount
 		return true, "出售成功"
