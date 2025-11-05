@@ -8,7 +8,7 @@ import (
 
 var wg sync.WaitGroup
 
-func f1(filesname string, ch chan<- string) { //传入filesname和只读channel
+func f1(filesname string, ch chan<- string) { //传入filesname和只输入channel
 	defer wg.Done() //延迟-1
 	fmt.Println("正在下载" + filesname)
 	time.Sleep(time.Second)  //等待
