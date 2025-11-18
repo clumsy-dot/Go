@@ -10,8 +10,9 @@ type Student struct {
 }
 
 func main() {
+	gin.SetMode("release")
 	r := gin.Default()
-	r.POST("/average", Average)
+	r.GET("/average", Average)
 	r.Run(":80")
 }
 
