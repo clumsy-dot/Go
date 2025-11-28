@@ -37,10 +37,3 @@ type Enrollment struct {
 	User   User   `gorm:"foreignKey:UserID" json:"user"`
 	Course Course `gorm:"foreignKey:CourseID" json:"course"`
 }
-
-// 黑名单
-type TokenBlacklist struct {
-	ID    uint      `gorm:"primaryKey" json:"id"` //退出记录  主键
-	Token string    `gorm:"size:50;uniqueIndex" json:"Token"`
-	ExpAt time.Time `json:"exp_at"`
-}
