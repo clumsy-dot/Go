@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"fmt"
 	"system/utils"
 
 	"github.com/gin-gonic/gin"
@@ -16,7 +15,6 @@ func Auth() gin.HandlerFunc {
 			return
 		}
 		claim, err := utils.VerifyAccessToken(authHadler)
-		fmt.Println(claim)
 		if err != nil {
 			utils.Error(c, 403, "Token错误")
 			c.Abort()
